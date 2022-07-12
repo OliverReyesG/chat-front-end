@@ -15,9 +15,9 @@ const ChatRoom = (props) => {
     <Box
       sx={{
         height: "100vh",
-        width: '100%',
+        width: '100%',  
         display: "flex",
-        padding:5,
+        padding:"2em 0",
         flexDirection: "column",
         justifyContent: "space-between",
         textAlign: 'center'

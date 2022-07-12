@@ -80,9 +80,6 @@ function App() {
         { room: room, author: "Me", text: currentMessage, time: messageTime },
       ])
       setCurrentMessage("")
-      bottomRef.current?.scrollIntoView({
-        behavior: "smooth",
-      });
     }
   };
 
@@ -91,10 +88,6 @@ function App() {
 
     socket.on("receive_message", (data) => {
       setMessages((messages) => [...messages, data]);
-      bottomRef.current?.scrollIntoView({
-        behavior: "smooth",
-        alignToTop: false
-      });
     });
 
     return () => {
@@ -102,6 +95,13 @@ function App() {
       console.log("Unmounted")
     };
   }, [socket]);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({
+      behavior: "smooth",
+      alignToTop: false
+    });
+  }, [messages])
 
   // Props objects
 
