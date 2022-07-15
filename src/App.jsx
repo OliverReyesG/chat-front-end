@@ -4,7 +4,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://oliverreyesg-chat-backend.herokuapp.com/");
 
 // Pages
 import Loby from "./Pages/Loby";
@@ -20,7 +20,7 @@ import { Container, CssBaseline } from "@mui/material";
 
 function App() {
   // Ref
-  const bottomRef = useRef(null)
+  const bottomRef = useRef(null);
   // State
   const [prefersDarkMode, setPrefersDarkMode] = useState(true);
   const [room, setRoom] = useState("");
@@ -78,30 +78,29 @@ function App() {
       setMessages((messages) => [
         ...messages,
         { room: room, author: "Me", text: currentMessage, time: messageTime },
-      ])
-      setCurrentMessage("")
+      ]);
+      setCurrentMessage("");
     }
   };
 
   // Side effects
   useEffect(() => {
-
     socket.on("receive_message", (data) => {
       setMessages((messages) => [...messages, data]);
     });
 
     return () => {
       socket.off("receive_message");
-      console.log("Unmounted")
+      console.log("Unmounted");
     };
   }, [socket]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({
       behavior: "smooth",
-      alignToTop: false
+      alignToTop: false,
     });
-  }, [messages])
+  }, [messages]);
 
   // Props objects
 
@@ -112,7 +111,7 @@ function App() {
     handleCurrentMessageChange,
     messages,
     sendMessage,
-    bottomRef
+    bottomRef,
   };
 
   return (
