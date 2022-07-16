@@ -9,6 +9,7 @@ const ChatRoom = (props) => {
     handleCurrentMessageChange,
     messages,
     sendMessage,
+    handleEnterKeyPress,
     bottomRef
   } = props;
   return (
@@ -28,7 +29,7 @@ const ChatRoom = (props) => {
         <Messages bottomRef={bottomRef} messages={messages}></Messages>
       </Box>
       <Box>
-        <MessageInput currentMessage={currentMessage} handleCurrentMessageChange={handleCurrentMessageChange} sendMessage={sendMessage} />
+        <MessageInput currentMessage={currentMessage} handleCurrentMessageChange={handleCurrentMessageChange} sendMessage={sendMessage} handleEnterKeyPress={handleEnterKeyPress}/>
       </Box>
     </Box>
   );

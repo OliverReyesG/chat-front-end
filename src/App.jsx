@@ -20,7 +20,7 @@ function App() {
   // Theming
   const {theme} = useTheme()
   // Chat
-  const {socket, room, setRoom, hasJoined, setHasJoined, currentMessage, setCurrentMessage, userName, setUserName, messages, setMessages, bottomRef, handleRoomChange, handleCurrentMessageChange, handleUserNameChange, joinRoom, sendMessage} = useChat()
+  const {socket, room, setRoom, hasJoined, setHasJoined, currentMessage, setCurrentMessage, userName, setUserName, messages, setMessages, bottomRef, handleRoomChange, handleCurrentMessageChange, handleUserNameChange, joinRoom, sendMessage, handleEnterKeyPress} = useChat()
   // Props objects
 
   const obj = {
@@ -30,6 +30,7 @@ function App() {
     handleCurrentMessageChange,
     messages,
     sendMessage,
+    handleEnterKeyPress,
     bottomRef,
   };
 

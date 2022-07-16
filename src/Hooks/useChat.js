@@ -58,10 +58,14 @@ const useChat = () => {
         { room: room, author: "Me", text: currentMessage, time: messageTime },
       ]);
       setCurrentMessage("");
-    } else {
-      alert("Message must not be empty!");
     }
   };
+
+  const handleEnterKeyPress = (e) => {
+    if(e.key === "Enter") {
+      sendMessage()
+    }
+  } 
 
 	// Side effects
   useEffect(() => {
@@ -82,7 +86,7 @@ const useChat = () => {
     });
   }, [messages]);
 
-  return {socket, room, setRoom, hasJoined, setHasJoined, currentMessage, setCurrentMessage, userName, setUserName, messages, setMessages, bottomRef, handleRoomChange, handleCurrentMessageChange, handleUserNameChange, joinRoom, sendMessage};
+  return {socket, room, setRoom, hasJoined, setHasJoined, currentMessage, setCurrentMessage, userName, setUserName, messages, setMessages, bottomRef, handleRoomChange, handleCurrentMessageChange, handleUserNameChange, joinRoom, sendMessage, handleEnterKeyPress};
 };
 
 export default useChat;

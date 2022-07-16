@@ -1,6 +1,6 @@
 import { TextField, Box, Button } from "@mui/material";
 
-const MessageInput = ({ currentMessage, handleCurrentMessageChange, sendMessage }) => {
+const MessageInput = ({ currentMessage, handleCurrentMessageChange, sendMessage, handleEnterKeyPress }) => {
   return (
     <Box sx={{display: 'flex'}} >
       <TextField
@@ -10,6 +10,7 @@ const MessageInput = ({ currentMessage, handleCurrentMessageChange, sendMessage 
         label="Message..."
         variant="outlined"
         fullWidth
+        onKeyDown={handleEnterKeyPress}
       />
       <Button onClick={sendMessage} variant="contained" >Send</Button>
     </Box>
