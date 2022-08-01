@@ -1,17 +1,14 @@
 import { Box, Typography } from "@mui/material";
+import { useContext } from "react";
 import MessageInput from "../Components/MessageInput";
 import Messages from "../Components/Messages";
+import ChatContext from "../Context/ChatContext";
 
-const ChatRoom = (props) => {
+
+const ChatRoom = () => {
   const {
     room,
-    currentMessage,
-    handleCurrentMessageChange,
-    messages,
-    sendMessage,
-    handleEnterKeyPress,
-    bottomRef
-  } = props;
+  } = useContext(ChatContext);
   return (
     <Box
       sx={{
@@ -26,10 +23,10 @@ const ChatRoom = (props) => {
     >
       <Typography variant="h3">Room: {room}</Typography>
       <Box>
-        <Messages bottomRef={bottomRef} messages={messages}></Messages>
+        <Messages></Messages>
       </Box>
       <Box>
-        <MessageInput currentMessage={currentMessage} handleCurrentMessageChange={handleCurrentMessageChange} sendMessage={sendMessage} handleEnterKeyPress={handleEnterKeyPress}/>
+        <MessageInput/>
       </Box>
     </Box>
   );

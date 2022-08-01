@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 // CSS imports
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -15,48 +15,34 @@ import { Container, CssBaseline } from "@mui/material";
 // Pages imports
 import Loby from "./Pages/Loby";
 import ChatRoom from "./Pages/ChatRoom";
+// Context
+import ChatContext from "./Context/ChatContext";
 
 function App() {
   // Theming
-  const {theme} = useTheme()
-  // Chat
-  const {socket, room, setRoom, hasJoined, setHasJoined, currentMessage, setCurrentMessage, userName, setUserName, messages, setMessages, bottomRef, handleRoomChange, handleCurrentMessageChange, handleUserNameChange, joinRoom, sendMessage, handleEnterKeyPress} = useChat()
-  // Props objects
+  const { theme } = useTheme();
+  const [hasJoined, setHasJoined] = useState()
 
-  const obj = {
-    room,
-    userName,
-    currentMessage,
-    handleCurrentMessageChange,
-    messages,
-    sendMessage,
-    handleEnterKeyPress,
-    bottomRef,
-  };
-
+  // State
   return (
     <ThemeProvider theme={theme}>
       <Container
         maxWidth="md"
         sx={{
-          height: "100vh",
+          height: "100dvh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <CssBaseline />
-        {!hasJoined ? (
-          <Loby
-            room={room}
-            handleRoomChange={handleRoomChange}
-            userName={userName}
-            handleUserNameChange={handleUserNameChange}
-            joinRoom={joinRoom}
-          />
-        ) : (
-          <ChatRoom {...obj} />
-        )}
+        <ChatContext.Provider value={useChat()}>
+          {!hasJoined ? (
+            <Loby setHasJoined={setHasJoined} />
+          ) : (
+            <ChatRoom />
+          )}
+        </ChatContext.Provider>
       </Container>
     </ThemeProvider>
   );

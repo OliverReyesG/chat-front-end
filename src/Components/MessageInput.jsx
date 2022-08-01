@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { TextField, Box, Button } from "@mui/material";
+import ChatContext from "../Context/ChatContext";
 
-const MessageInput = ({ currentMessage, handleCurrentMessageChange, sendMessage, handleEnterKeyPress }) => {
+const MessageInput = () => {
+
+  const { currentMessage, handleCurrentMessageChange, sendMessage, handleEnterKeyPress } = useContext(ChatContext)
+
   return (
     <Box sx={{display: 'flex'}} >
       <TextField

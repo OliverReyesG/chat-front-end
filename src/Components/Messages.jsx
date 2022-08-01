@@ -1,7 +1,9 @@
 import { Box } from "@mui/material"
 import Message from "./Message"
-
-const Messages = ({ messages, bottomRef }) => {
+import ChatContext from "../Context/ChatContext"
+import { useContext } from "react"
+const Messages = () => {
+    const {messages, bottomRef} = useContext(ChatContext)
     return(
         <Box sx={{ maxHeight: '70vh', overflowY: 'scroll', display: 'flex', padding:"2em", flexDirection: 'column', gap: 2}}>
             {messages.map((message, key) => (
