@@ -4,6 +4,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import "./App.css"
 // Socketio imports
 import io from "socket.io-client";
 // Hooks imports
@@ -28,8 +29,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <Container
         maxWidth="md"
+        className="full-mobile-height"
         sx={{
-          height: "100dvh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
