@@ -11,8 +11,8 @@ const ChatRoom = () => {
   } = useContext(ChatContext);
   return (
     <Box
+      className="full-mobile-height"
       sx={{
-        height: "100vh",
         width: '100%',  
         display: "flex",
         padding:"2em 0",
