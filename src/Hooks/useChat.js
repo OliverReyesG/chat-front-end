@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import { useState, useEffect ,useRef } from "react";
 
 // Socketio instance
-const socket = io.connect("https://oliverreyesg-chat-backend.herokuapp.com/");
+const socket = io.connect("https://chat-backend-ankm.onrender.com");
 
 const useChat = () => {
   // State
